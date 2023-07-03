@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+    <br>
+    <div class="card mb-3" style="max-width: 1500px;margin-left: 230px;height: 550px;">
+        <div class="row no-gutters">
+            <div class="col-md-4"><br>
+
+                <img class="card-img" src="{{ object.image_url }}">
+            </div>
+            <div class="col-md-8">
+                <br><br>
+                <div class="card-body">
+                    <h4 class="card-title">{{ object.title }}</h4>
+                    <p class="card-text">{{ object.description }}</p>
+                </div>
+            </div>
+        </div>
+
+        {% if object.choco_available is True %}
+        <br><br>
+        {% else %}
+        <h4 class="text-danger" style=margin-left:400px;>Out of Stock !</h4>
+        {% endif %}
+    </div>
+
+    {% endblock content %}
+

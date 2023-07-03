@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zxx">
+{% load static %}
+{% block content %}
+<head>
+    <meta charset="UTF-8">
+    <meta content="Phozogy Template" name="description">
+    <meta content="Phozogy, unica, creative, html" name="keywords">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" rel="stylesheet">
+    <title>Chocolate Store</title>
+
+</head>
+
+
+<body>
+<div style="margin-left: 90x; padding: 50px;">
+    <div class="row">
+        {% for each in object_list %}
+        <div class="col-md-6 col-lg-4 col-xl-3"><br><br>
+            <div class="card"
+                 style="width:100% 20rem; background-color: rgba(245, 245, 245, 0.4) ;box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);transition: 0.3s; ">
+                <img alt="..." class="card-img-top" src="{{ each.image_url }}" style="width:100%">
+                <div class="card card-body flex-fill">
+                    <h5 class="card-title">{{ each.title|slice:":10"}} ...</h5>
+                    <p class="card-text">${{ each.price|floatformat:2 }}</p>
+                    {% if each.choco_available is True %}
+                    <li style="color:chocolate ">Available</li>
+                    {% else %}
+                    <li class="text-danger">Out of Stock !</li>
+                    {% endif %}</br>
+                    <a class="button" href="{% url 'details' each.id %}" style="background-color: #D2691E;
+                      border: none;
+                      color: white;
+                      padding: 10px 20px;
+                      text-align: center;
+                      text-decoration: none;
+                      display: inline-block;
+                      font-size: 16px;
+                      margin: 4px 2px;
+                      cursor: pointer;">View</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+
+
+    </div>
+
+</div>
+{% endblock content %}
+</div>
+</body>
+
+
